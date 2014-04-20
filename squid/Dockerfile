@@ -7,7 +7,8 @@ RUN apt-get install -y squid3 python
 
 ADD squid.conf /etc/squid3/squid.conf
 ADD url-rewriter.py /etc/squid3/url-rewriter.py
+RUN chmod +x /etc/squid3/url-rewriter.py
+
+ENTRYPOINT ["/usr/sbin/squid3", "-N"]
 
 EXPOSE 8080
-
-CMD ['/usr/sbin/squid3', '-N', '-X']
